@@ -1,0 +1,50 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #567189;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.choices {
+  background-color: #cfb997;
+  display: flex;
+  width: 90%;
+  height: 450px;
+  margin: 64px;
+}
+
+.plays {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.plays img {
+  height: 200px;
+}
+
+#rock:hover,
+#paper:hover,
+#scissors:hover {
+  border-style: solid;
+}
+#rock:hover img {
+  content: url(./images/srock-attack.png);
+}
+#paper:hover img {
+  content: url(./images/spaper-attack.png);
+  height: 250px;
+}
+#scissors:hover img {
+  content: url(./images/scissors-close.png);
+  height: 250px;
+}
