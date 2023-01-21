@@ -1,30 +1,27 @@
 let choices = ['ROCK', 'PAPER', 'SCISSORS'];
 
+let result = document.querySelector('#result');
+
+let buttons = document.querySelectorAll('.plays');
+
+buttons.forEach((button) => button.addEventListener('click', playRound));
+
 function getComputerChoice() {
   return choices[Math.floor(Math.random() * choices.length)];
 }
 
-function playRound(playerSelection, computerSelection) {
-  playerSelection = playerSelection.toUpperCase();
+function playRound(e) {
+  playerSelection = e.target.id.toUpperCase();
+  computerSelection = getComputerChoice();
 
-  if (playerSelection === computerSelection) return `DRAW!! You Played ${playerSelection} and the Computer played ${computerSelection}` ;
+  if (playerSelection === computerSelection)
+    result.textContent = `DRAW!! You Played ${playerSelection} and the Computer played ${computerSelection}`;
 
   if (
     (computerSelection === 'ROCK' && playerSelection === 'SCISSORS') ||
     (computerSelection === 'SCISSORS' && playerSelection === 'PAPER') ||
     (computerSelection === 'PAPER' && playerSelection === 'ROCK')
   )
-    return `Computer wins You Played ${playerSelection} and the Computer played ${computerSelection}`;
-  return `YOU WIN!! You Played ${playerSelection} and the Computer played ${computerSelection}`;
+    result.textContent = `Computer wins You Played ${playerSelection} and the Computer played ${computerSelection}`;
+  result.textContent = `YOU WIN!! You Played ${playerSelection} and the Computer played ${computerSelection}`;
 }
-
-function game() {
-  for (let i = 0; i < 5; i++) {
-    playerSelection = prompt(`Rock, Paper, Scissors? ${i}/5`).toUpperCase();
-    computerSelection = getComputerChoice();
-    console.log(playRound(playerSelection, getComputerChoice()));
-  }
-}
-
-
-game();
